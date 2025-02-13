@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.homePage.fragment.FavoriteFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_medium"
+            android:maxWidth="488dp"
+            android:queryHint="@string/search_recipe"
+            android:iconifiedByDefault="false"
+            android:background="@drawable/search_background"/>
+
+
+        <LinearLayout
+            android:id="@+id/noRecipesLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:elevation="4dp">
+
+            <ImageView
+            android:id="@+id/searchImage"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/favourite_chef"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:layout_marginTop="180dp"
+            />
+
+            <TextView
+                android:id="@+id/noRecipesMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:gravity="center"
+                android:text="@string/no_recipes_message"
+                android:textColor="@color/md_theme_primary"
+                android:textSize="16sp"
+                android:elevation="4dp"
+                />
+
+
+
+    </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="@dimen/margin_medium" />
+    </LinearLayout>
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:visibility="visible"
+        android:id="@+id/circularProgressIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:layout_gravity="center"/>
+
+</FrameLayout>

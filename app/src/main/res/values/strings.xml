@@ -1,0 +1,175 @@
+<resources>
+    <string name="current_section">Sezione Corrente</string>
+    <string name="back">Back</string>
+    <string name="research">Ricerca</string>
+    <string name="favourites">Preferiti</string>
+    <string name="home">Home</string>
+    <string name="toDo">Da fare</string>
+    <string name="app_name">CooKing</string>
+    <string name="password_dimenticata">Password dimenticata?</string>
+    <string name="log_in">Accedi</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Registrati</string>
+    <string name="bentornato">Bentornato Chef!</string>
+    <string name="already_registered">Sei già registrato?</string>
+    <string name="oppure">Oppure</string>
+    <string name="accedi_google">Accedi con Google</string>
+    <string name="nome">Nome</string>
+    <string name="cognome">Cognome</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main">mainActivity</string>
+    <string name="nome_ricetta">Nome ricetta</string>
+    <string name="categoria">Categoria : </string>
+    <string name="noInternetMessage">no internet</string>
+    <string name="ingredients_title">Ingredienti</string>
+    <string name="procedure_title">Preparazione</string>
+    <string name="search_recipe">Cerca la tua ricetta</string>
+    <string name="Origine">Origine : </string>
+    <string name="applica_filtro">Applica</string>
+    <string name="categoria_ricetta">Categoria</string>
+    <string name="area_ricetta">Area</string>
+    <string name="iniziale_ricetta">Iniziale</string>
+    <string name="no_recipes_message">Nessuna ricetta presente</string>
+    <string name="profile">profilo</string>
+    <string name="error_unexpected">Unexpected error</string>
+    <string name="error_retireving_recipes">There was an error in retrieving the recipes</string>
+    <string name="error_email_login">Check the email address</string>
+    <string name="error_password_login">The password must have at least 8 characters</string>
+    <string name="error_collision_user">This email is already registered</string>
+    <string name="profile_name">Nome Cognome</string>
+    <string name="profile_email">e-mail</string>
+    <string name="settings">Impostazioni</string>
+    <string name="dark_mode">Modalità scura</string>
+    <string name="actions">Azioni</string>
+    <string name="delete_profile">Cancella Profilo</string>
+    <string name="delete_favourites">Cancella Preferiti</string>
+    <string name="logout">Log out</string>
+    <string name="profile_image_description">Profile Image</string>
+    <string name="share">Condividi</string>
+    <string name="favourite_delete">Togli dai preferiti</string>
+    <string name="ricetta_proposta">Ricetta del giorno</string>
+    <string name="discover">Discover</string>
+    <string name="sort">Sort</string>
+    <string name="description_random_recipe">Ogni giorno ti aspetta una nuova sfida in cucina! Scopri la ricetta del giorno, segui i passaggi e porta in tavola un piatto che lascia tutti senza parole. Che aspetti? Oggi potrebbe essere il giorno del tuo capolavoro!</string>
+    <string name="random_title">Funzionamento:</string>
+    <string name="area">Area</string>
+    <string name="title_long">titolo lungo</string>
+    <string name="title_short">titolo corto</string>
+    <string name="author">autore</string>
+    <string name="time">tempo</string>
+    <string name="no_internet_connection">Internet non disponibile</string>
+    <string name="esporta_favoriti">Esporta favoriti</string>
+    <string name="vai_alla_fonte">Vai alla fonte</string>
+    <string name="guarda_il_tutorial">Guarda il tutorial</string>
+    <string name="main_course">Piatto principale</string>
+    <string name="ricerca">Ricerca</string>
+    <string name="recipe_removed_from_favourite">Ricetta rimossa dai preferiti</string>
+    <string name="not_valid_index">"Indice non valido per la rimozione: + position "</string>
+    <string name="random_recipe_failure">Insuccesso recupero ricetta random</string>
+    <string name="local_recipe_error">Errore nel recupero della ricetta locale</string>
+    <string name="local_recipe_error_no_saved">Errore nel recupero della ricetta locale : nessuna ricetta salvata</string>
+    <string name="non_existent_user">Utente inesistente</string>
+    <string name="insert_valid_email">Inserisci un\'email valida</string>
+    <string name="email_sent">Email inviata! Controlla la tua posta</string>
+    <string name="no_recipes_found">nessuna ricetta trovata</string>
+    <string name="profilo_eliminato_con_successo">Profilo eliminato con successo!</string>
+    <string name="errore_eliminazione_del_profilo">Errore nell\'eliminazione del profilo.</string>
+    <string name="conferma_eliminazione">Conferma eliminazione</string>
+    <string name="sicura_eliminazione">Sei sicuro di voler eliminare il profilo? Questa azione è irreversibile.</string>
+    <string name="elimina_conferma">Elimina</string>
+    <string name="preferiti_eliminate_con_successo">Preferiti eliminate con successo!</string>
+    <string name="errore_eliminazione_preferiti">Errore durante l\'eliminazione dei preferiti.</string>
+    <string name="nessuna_ricetta_preferita_da_esportare">Nessuna ricetta preferita da esportare!</string>
+    <string name="esportazione_completata">Esportazione completata!</string>
+    <string name="errore_durante_l_esportazione">Errore durante l\'esportazione!</string>
+    <string name="errore_nel_recupero_delle_ricette">Errore nel recupero delle ricette!</string>
+    <string name="condividi_le_tue_ricette_preferite">Condividi le tue ricette preferite</string>
+    <string name="reimposta_password">Reimposta Password</string>
+    <string name="inserisci_la_tua_email">Inserisci la tua email</string>
+    <string name="invia">Invia</string>
+    <string name="annulla">Annulla</string>
+    <string name="riempi_campi">riempi tutti i campi</string>
+
+
+    <string-array name="category_array">
+        <item>Qualsiasi</item>
+        <item>Beef</item>
+        <item>Breakfast</item>
+        <item>Chicken</item>
+        <item>Dessert</item>
+        <item>Goat</item>
+        <item>Lamb</item>
+        <item>Miscellaneous</item>
+        <item>Pasta</item>
+        <item>Pork</item>
+        <item>Seafood</item>
+        <item>Side</item>
+        <item>Starter</item>
+        <item>Vegan</item>
+        <item>Vegetarian</item>
+    </string-array>
+
+    <string-array name="area_array">
+        <item>Qualsiasi</item>
+        <item>American</item>
+        <item>British</item>
+        <item>Canadian</item>
+        <item>Chinese</item>
+        <item>Croatian</item>
+        <item>Dutch</item>
+        <item>Egyptian</item>
+        <item>Filipino</item>
+        <item>French</item>
+        <item>Greek</item>
+        <item>Indian</item>
+        <item>Irish</item>
+        <item>Italian</item>
+        <item>Jamaican</item>
+        <item>Japanese</item>
+        <item>Kenyan</item>
+        <item>Malaysian</item>
+        <item>Mexican</item>
+        <item>Moroccan</item>
+        <item>Polish</item>
+        <item>Portuguese</item>
+        <item>Russian</item>
+        <item>Spanish</item>
+        <item>Thai</item>
+        <item>Tunisian</item>
+        <item>Turkish</item>
+        <item>Ukrainian</item>
+        <item>Unknown</item>
+        <item>Vietnamese</item>
+    </string-array>
+
+
+    <string-array name="letter_array">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+        <item>E</item>
+        <item>F</item>
+        <item>G</item>
+        <item>H</item>
+        <item>I</item>
+        <item>J</item>
+        <item>K</item>
+        <item>L</item>
+        <item>M</item>
+        <item>N</item>
+        <item>O</item>
+        <item>P</item>
+        <item>Q</item>
+        <item>R</item>
+        <item>S</item>
+        <item>T</item>
+        <item>U</item>
+        <item>V</item>
+        <item>W</item>
+        <item>X</item>
+        <item>Y</item>
+        <item>Z</item>
+    </string-array>
+</resources>

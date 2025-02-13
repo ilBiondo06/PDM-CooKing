@@ -1,0 +1,12 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Colore di sfondo -->
+    <solid android:color="@color/md_theme_primary" /> <!-- Verde scuro -->
+
+    <!-- Arrotondamento degli angoli -->
+    <corners android:radius="8dp" />
+
+    <!-- Bordo visibile -->
+    <stroke
+        android:width="2dp"
+        android:color="#FFFFFF" /> <!-- Bordo bianco -->
+</shape>

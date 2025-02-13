@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Sezione Profilo -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingBottom="16dp">
+
+            <!-- Immagine Profilo -->
+            <ImageView
+                android:id="@+id/profile_image"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/login_image"
+                android:scaleType="centerCrop"
+                android:layout_marginBottom="8dp"
+                android:elevation="4dp"
+                android:contentDescription="@string/profile_image_description" />
+
+            <!-- Nome -->
+            <TextView
+                android:id="@+id/profile_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_name"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="4dp"
+                android:textColor="?attr/colorOnBackground" />
+
+            <!-- E-mail -->
+            <TextView
+                android:id="@+id/profile_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_email"
+                android:textSize="14sp"
+                android:textColor="?attr/colorOnBackground" />
+        </LinearLayout>
+
+        <!-- Sezione Impostazioni -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/margin_small"
+            android:gravity="center">
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="#CCCCCC" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/settings"
+                android:paddingHorizontal="8dp"
+                android:textColor="?attr/colorOnBackground" />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="#CCCCCC" />
+        </LinearLayout>
+
+        <!-- Switch Modalità Scura -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingVertical="8dp">
+
+            <TextView
+                android:id="@+id/dark_mode_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dark_mode"
+                android:textSize="16sp"
+                android:textColor="?attr/colorOnBackground"
+                android:layout_gravity="center_vertical" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/dark_mode_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <!-- Sezione Azioni -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/margin_small"
+            android:gravity="center">
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="#CCCCCC" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/actions"
+                android:paddingHorizontal="8dp"
+                android:textColor="?attr/colorOnBackground" />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="#CCCCCC" />
+        </LinearLayout>
+
+        <!-- Sezione Pulsanti -->
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:paddingVertical="8dp"
+            android:rowOrderPreserved="false"
+            android:useDefaultMargins="true">
+
+            <!-- Pulsante Cancella Profilo -->
+            <Button
+                android:id="@+id/delete_profile_button"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_columnSpan="1"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:text="@string/delete_profile"
+                android:elevation="2dp"
+                android:background="@drawable/button_ripple"
+                android:textAllCaps="true"
+                style="@style/Widget.Material3.Button.Icon" />
+
+            <!-- Pulsante Cancella Preferiti -->
+            <Button
+                android:id="@+id/delete_favourites_button"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_columnSpan="1"
+                android:layout_columnWeight="1"
+                android:text="@string/delete_favourites"
+                android:elevation="2dp"
+                android:background="@drawable/button_ripple"
+                android:textAllCaps="true"
+                style="@style/Widget.Material3.Button.Icon" />
+
+            <!-- Pulsante Logout -->
+            <Button
+                android:id="@+id/logout_button"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_columnSpan="1"
+                android:layout_columnWeight="1"
+                android:text="@string/logout"
+                android:elevation="2dp"
+                android:background="@drawable/button_ripple"
+                android:textAllCaps="true"
+                style="@style/Widget.Material3.Button.Icon" />
+
+            <!-- Pulsante Esporta Preferiti -->
+            <Button
+                android:id="@+id/export_favourites_button"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_columnSpan="1"
+                android:layout_columnWeight="1"
+                android:text="@string/esporta_favoriti"
+                android:elevation="2dp"
+                android:background="@drawable/button_ripple"
+                android:textAllCaps="true"
+                style="@style/Widget.Material3.Button.Icon" />
+        </GridLayout>
+
+    </LinearLayout>
+</ScrollView>

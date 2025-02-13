@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.homePage.fragment.SearchFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxWidth="488dp"
+            android:queryHint="@string/search_recipe"
+            android:iconifiedByDefault="false"
+            android:background="@drawable/search_background"/>
+
+        <TextView
+            android:id="@+id/titleRecipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ricetta_proposta"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:layout_marginTop="32dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/ricetteView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/margin_small"
+            android:paddingEnd="@dimen/margin_small"
+            app:layout_constraintTop_toBottomOf="@id/card"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:backgroundTint="@color/cardview_light_background"/>
+
+
+        <!-- Card che contiene gli ingredienti -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/random_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_small"
+            android:layout_marginStart="@dimen/margin_small"
+            app:cardCornerRadius="25dp"
+            app:cardElevation="4dp"
+            android:layout_marginTop="@dimen/margin_medium"
+            style="@style/CustomCardViewStyle">
+
+            <!-- Testo degli ingredienti -->
+            <TextView
+                android:id="@+id/random_procedure"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="4dp"
+                android:text="@string/description_random_recipe"
+                android:padding="16dp"
+                android:textSize="12sp" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/titleDiscover"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/discover"
+            android:layout_gravity="center"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:visibility="invisible"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/areaRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/categoryRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</FrameLayout>

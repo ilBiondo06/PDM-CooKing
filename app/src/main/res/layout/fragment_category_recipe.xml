@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.homePage.fragment.NameSearchRecipeFragment">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ricetteView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/margin_small"
+        android:paddingEnd="@dimen/margin_small"
+        android:backgroundTint="@color/cardview_light_background"/>
+
+    <LinearLayout
+        android:id="@+id/noRecipesLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/noRecipesImage"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/search_chef"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:layout_marginTop="80dp"
+            android:contentDescription="@string/no_recipes_found"/>
+
+        <TextView
+            android:id="@+id/noRecipesMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no_recipes_message"
+            android:textSize="16sp"
+            android:textColor="@color/md_theme_primary"
+            android:gravity="center"
+            android:layout_marginTop="16dp"/>
+    </LinearLayout>
+
+</FrameLayout>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/home_graph"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/homeFragment">
+
+    <!-- Home Fragment -->
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.unimib.cooking.ui.homePage.fragment.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_searchFragment_to_visualize_card"
+            app:destination="@id/RecipeVisualizeFragment" />
+    </fragment>
+
+    <!-- Preferiti Fragment -->
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.unimib.cooking.ui.homePage.fragment.FavoriteFragment"
+        android:label="Preferiti"
+        tools:layout="@layout/fragment_favorite">
+        <action
+            android:id="@+id/action_searchFragment_to_visualize_card"
+            app:destination="@id/RecipeVisualizeFragment" />
+    </fragment>
+
+    <!-- Ricerca Fragment -->
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.unimib.cooking.ui.homePage.fragment.SearchFragment"
+        android:label="Ricerca"
+        tools:layout="@layout/fragment_search" >
+
+        <action
+            android:id="@+id/action_searchFragment_to_visualize_card"
+            app:destination="@id/RecipeVisualizeFragment" />
+
+        <!-- Nuove azioni per navigare dai grid item -->
+        <action
+            android:id="@+id/action_searchFragment_to_categoryRecipesFragment"
+            app:destination="@id/categoryRecipesFragment" />
+    </fragment>
+
+    <!-- Profilo Fragment -->
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.unimib.cooking.ui.homePage.fragment.ProfileFragment"
+        android:label="Profilo"
+        tools:layout="@layout/fragment_profile" />
+
+    <!-- Visualizzazione Ricetta Fragment -->
+    <fragment
+        android:id="@+id/RecipeVisualizeFragment"
+        android:name="com.unimib.cooking.ui.homePage.fragment.RecipeVisualizeFragment"
+        android:label="La tua Ricetta"
+        tools:layout="@layout/fragment_recipe_visualize" />
+
+    <!-- Fragment per le Ricette per Categoria -->
+    <fragment
+        android:id="@+id/categoryRecipesFragment"
+        android:name="com.unimib.cooking.ui.homePage.fragment.NameSearchRecipeFragment"
+        android:label="Ricetta per Nome"
+        tools:layout="@layout/fragment_category_recipe" >
+        <action
+            android:id="@+id/action_searchFragment_to_visualize_card"
+            app:destination="@id/RecipeVisualizeFragment" />
+    </fragment>
+
+
+
+
+</navigation>

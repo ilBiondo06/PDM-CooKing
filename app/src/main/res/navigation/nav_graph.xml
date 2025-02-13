@@ -1,0 +1,38 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/nav_graph"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/autenticationFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.unimib.cooking.ui.welcome.fragment.loginFragment"
+        tools:layout="@layout/fragment_login"
+        android:label="LoginFragment" >
+
+    </fragment>
+    <fragment
+        android:id="@+id/autenticationFragment"
+        android:name="com.unimib.cooking.ui.welcome.fragment.autenticationFragment"
+        android:label="autenticationFragment"
+        tools:layout="@layout/fragment_autentication">
+
+        <action
+            android:id="@+id/action_autenticationFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
+        <action
+            android:id="@+id/action_autenticationFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registrationFragment"
+        android:name="com.unimib.cooking.ui.welcome.fragment.registrationFragment"
+        tools:layout="@layout/fragment_registration"
+        android:label="registrationFragment" />
+
+
+
+
+
+
+</navigation>
