@@ -37,7 +37,7 @@ public class Constants {
 
     public static final String FIREBASE_REALTIME_DATABASE = "https://pilotpdm-b7cfd-default-rtdb.europe-west1.firebasedatabase.app/";
     public static final String FIREBASE_USERS_COLLECTION = "users";
-    public static final String FIREBASE_FAVORITE_NEWS_COLLECTION = "favorite_news";
+    public static final String FIREBASE_FAVORITE_NEWS_COLLECTION = "favoriteRecipes";
     public static final String UNEXPECTED_ERROR = "unexpected_error";
 
     public static final String SHARED_PREFERENCES_SELECTED_FILTER = "selected_filter";

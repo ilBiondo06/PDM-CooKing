@@ -1,5 +1,7 @@
 package com.unimib.cooking.repository.user;
 
+import android.util.Log;
+
 import androidx.lifecycle.MutableLiveData;
 
 import com.unimib.cooking.model.Recipe;
@@ -91,6 +93,7 @@ public class UserRepository implements IUserRepository, UserResponseCallback, Re
     public void onSuccessFromAuthentication(User user) {
         if (user != null) {
             userDataRemoteDataSource.saveUserData(user);
+            Log.d("TAGGA", user.getIdToken());
         }
     }
 

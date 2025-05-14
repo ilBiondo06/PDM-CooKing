@@ -1,37 +1,21 @@
 {
   "project_info": {
-    "project_number": "284265458507",
-    "firebase_url": "https://cooking-ac351-default-rtdb.europe-west1.firebasedatabase.app",
-    "project_id": "cooking-ac351",
-    "storage_bucket": "cooking-ac351.firebasestorage.app"
+    "project_number": "478035839585",
+    "firebase_url": "https://cookingpdm-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "cookingpdm",
+    "storage_bucket": "cookingpdm.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:284265458507:android:fcdd4d1869098f297556ce",
+        "mobilesdk_app_id": "1:478035839585:android:d8930f9869e44b547db820",
         "android_client_info": {
           "package_name": "com.unimib.cooking"
         }
       },
       "oauth_client": [
         {
-          "client_id": "284265458507-0ce3sf3mso7vcms7aliidvapn90gvtbq.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.unimib.cooking",
-            "certificate_hash": "2e9cd376c6cf62fd93d918c67a5e61a2935f592a"
-          }
-        },
-        {
-          "client_id": "284265458507-3a9kmks77tfs4ijnto4toan5qp5ar8v8.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.unimib.cooking",
-            "certificate_hash": "af02e8d3c20c28c2cbf12fa2ddf3d960e9ef630c"
-          }
-        },
-        {
-          "client_id": "284265458507-431eid9dic6e5q8vhvjrh4i8tfvu0ihi.apps.googleusercontent.com",
+          "client_id": "478035839585-l7pbf0nnvnctud6o8eut3ged4urdplaf.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.unimib.cooking",
@@ -39,28 +23,20 @@
           }
         },
         {
-          "client_id": "284265458507-ve280q7s8999ihis0i9mse8m8c0jte19.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.unimib.cooking",
-            "certificate_hash": "55ee86a5614a550cfaba64223bc0bbc7508b4fc4"
-          }
-        },
-        {
-          "client_id": "284265458507-adcburgokt6gmv114d3uae6gdrqssn0b.apps.googleusercontent.com",
+          "client_id": "478035839585-priu4vhenushl54l3a3b8l03mc80smra.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyB0teP0MmoVVIQpPRURVODMwVt0jDVo4L8"
+          "current_key": "AIzaSyDeoPvi92adl0ALb0JGnmM_DSNDdGIMLho"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "284265458507-adcburgokt6gmv114d3uae6gdrqssn0b.apps.googleusercontent.com",
+              "client_id": "478035839585-buqudjt76e2onqhj37auhsp8ipqfvmjg.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

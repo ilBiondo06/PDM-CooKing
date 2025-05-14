@@ -39,7 +39,7 @@ public class UserViewModel extends ViewModel {
         return userMutableLiveData;
     }
 
-    public MutableLiveData<Result> getUserFavoriteNewsMutableLiveData(String idToken) {
+    public MutableLiveData<Result> getUserFavoriteRecipesMutableLiveData(String idToken) {
         if (userFavoriteNewsMutableLiveData == null) {
             getUserFavoriteNews(idToken);
         }

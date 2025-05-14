@@ -23,12 +23,15 @@ import androidx.navigation.Navigation;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.unimib.cooking.R;
+import com.unimib.cooking.model.Result;
+import com.unimib.cooking.model.User;
 import com.unimib.cooking.repository.user.IUserRepository;
 import com.unimib.cooking.ui.homePage.activity.MainActivity;
 import com.unimib.cooking.ui.welcome.viewmodel.UserViewModel;
@@ -79,9 +82,6 @@ public class registrationFragment extends Fragment {
             navController.navigateUp();
         });
 
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        Log.d(TAG, "currentUser: " + currentUser);
 
         view.findViewById(R.id.BottoneRegistrazione).setOnClickListener(v -> {
             String email = textInputEmail.getText().toString().trim();
@@ -95,47 +95,47 @@ public class registrationFragment extends Fragment {
             boolean checkEmail = !email.isEmpty();
             boolean checkPassword = !password.isEmpty();
 
-            if(checkName && checkSurname && checkEmail && checkPassword) {
-                mAuth.createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    // Sign in success, update UI with the signed-in user's information
-                                    Log.d(TAG, "createUserWithEmail:success");
-                                    FirebaseUser user = mAuth.getCurrentUser();
+           if (checkName && checkSurname && checkEmail && checkPassword) {
+                //binding.progressBar.setVisibility(View.VISIBLE);
+                if (!userViewModel.isAuthenticationError()) {
+                    userViewModel.getUserMutableLiveData(email, password, false).observe(
+                            getViewLifecycleOwner(), result -> {
+                                Log.d(TAG, "risultato autenticazione: "+result);
+                                if (result.isSuccess()) {
+                                    User user = ((Result.UserSuccess) result).getData();
+                                    Log.d(TAG, "Login successful. User ID: " + user.getIdToken());
+                                    //saveLoginData(email, password, user.getIdToken());
+                                    userViewModel.setAuthenticationError(false);
 
-                                    user = FirebaseAuth.getInstance().getCurrentUser();
-
-                                    UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                                            .setDisplayName(name + " " + surname)
-                                            .build();
-                                    user.updateProfile(profileUpdates)
-                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                @Override
-                                                public void onComplete(@NonNull Task<Void> task) {
-                                                    if (task.isSuccessful()) {
-                                                        Log.d(TAG, "User profile updated.");
-                                                    }
-                                                }
-                                            });
                                     Intent intent = new Intent(getContext(), MainActivity.class);
+
+                                    //add name and email in the profile
+
                                     startActivity(intent);
+                                    //requireActivity().finish();
+
                                 } else {
-                                    // If sign in fails, display a message to the user.
-                                    Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                                    Log.e(TAG, "Login failed: " + ((Result.Error) result).getMessage());
+                                    userViewModel.setAuthenticationError(true);
+                                    Snackbar.make(requireActivity().findViewById(android.R.id.content),
+                                            getErrorMessage(((Result.Error) result).getMessage()),
+                                            Snackbar.LENGTH_SHORT).show();
                                 }
-                            }
-                        });
-            }else{
-                makeText(getContext(), R.string.riempi_campi, Toast.LENGTH_SHORT).show();
+                            });
+                } else {
+                    userViewModel.getUser(email, password, false);
+                }
+                //binding.progressBar.setVisibility(View.GONE);
+            } else {
+                userViewModel.setAuthenticationError(true);
+                Snackbar.make(requireActivity().findViewById(android.R.id.content),
+                        R.string.error_email_login, Snackbar.LENGTH_SHORT).show();
             }
 
         });
-
-
         return view;
     }
+
 
     private String getErrorMessage(String message) {
         switch(message) {

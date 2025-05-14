@@ -141,6 +141,7 @@ public class ProfileFragment extends Fragment {
         return rootView;
     }
 
+    // to do: fix
     private void deleteProfile() {
         new AlertDialog.Builder(requireContext())
                 .setTitle(R.string.conferma_eliminazione)
@@ -164,6 +165,8 @@ public class ProfileFragment extends Fragment {
                 .show();
     }
 
+
+    // to do: fix
     private void deleteFavourites() {
         recipeViewModel.getFavoriteRecipesLiveData().observe(getViewLifecycleOwner(), result -> {
             if (result.isSuccess()) {
@@ -186,6 +189,8 @@ public class ProfileFragment extends Fragment {
         });
     }
 
+
+    // to do: fix
     private void logoutUser() {
         FirebaseAuth.getInstance().signOut();
 

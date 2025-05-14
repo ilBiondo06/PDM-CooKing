@@ -19,13 +19,17 @@ import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.FirebaseApp;
 import com.unimib.cooking.R;
 import com.unimib.cooking.adapter.RecipeAdapter;
 import com.unimib.cooking.model.Recipe;
 import com.unimib.cooking.model.Result;
 import com.unimib.cooking.repository.recipe.RecipeRepository;
+import com.unimib.cooking.repository.user.IUserRepository;
 import com.unimib.cooking.ui.homePage.viewmodel.RecipeViewModel;
 import com.unimib.cooking.ui.homePage.viewmodel.RecipeViewModelFactory;
+import com.unimib.cooking.ui.welcome.viewmodel.UserViewModel;
+import com.unimib.cooking.ui.welcome.viewmodel.UserViewModelFactory;
 import com.unimib.cooking.util.Constants;
 import com.unimib.cooking.util.FavoriteOrganizator;
 import com.unimib.cooking.util.NetworkUtil;
@@ -46,7 +50,7 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
     private FrameLayout noInternetView;
     private String selectedFilter;
-    private FavoriteOrganizator favoriteOrganizator;
+    private UserViewModel userViewModel;
     private LinearLayout noRecipesLayout;
 
     public HomeFragment() {
@@ -61,6 +65,12 @@ public class HomeFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true); // Ensure this is called to enable the menu
+
+        IUserRepository userRepository = ServiceLocator.getInstance().
+                getUserRepository(requireActivity().getApplication());
+        userViewModel = new ViewModelProvider(
+                requireActivity(),
+                new UserViewModelFactory(userRepository)).get(UserViewModel.class);
 
         sharedPreferencesUtils = new SharedPreferencesUtils(requireActivity().getApplication());
 
@@ -108,7 +118,7 @@ public class HomeFragment extends Fragment {
                             public void onFavoriteButtonPressed(int position) {
                                 recipeList.get(position).setLiked(!recipeList.get(position).getLiked());
                                 recipeViewModel.updateRecipe(recipeList.get(position));
-                                favoriteOrganizator.updateFavoriteRecipe(recipeList.get(position), recipeList.get(position).getLiked());
+
                             }
 
                             @Override
@@ -118,7 +128,6 @@ public class HomeFragment extends Fragment {
                                 recipe.setLiked(false);  // Imposta la ricetta come non preferita
                                 Log.d(TAG, "false: "+recipeList.get(position).getStrMeal());
                                 recipeViewModel.updateRecipe(recipe);
-                                favoriteOrganizator.updateFavoriteRecipe(recipe, false);
                             }
                         });
 
@@ -159,7 +168,6 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        favoriteOrganizator = FavoriteOrganizator.getInstance(recipeViewModel);
     }
 
     @Override

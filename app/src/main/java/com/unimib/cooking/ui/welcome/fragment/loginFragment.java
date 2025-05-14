@@ -66,7 +66,7 @@ public class loginFragment extends Fragment {
     private ActivityResultLauncher<IntentSenderRequest> activityResultLauncher;
     private ActivityResultContracts.StartIntentSenderForResult startIntentSenderForResult;
     private UserViewModel userViewModel;
-    private FirebaseAuth mAuth;
+    //private FirebaseAuth mAuth;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -161,9 +161,6 @@ public class loginFragment extends Fragment {
             navController.navigateUp();
         });
 
-        mAuth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        Log.d(TAG, "currentUser: " + currentUser);
 
         return view;
     }
@@ -184,32 +181,26 @@ public class loginFragment extends Fragment {
 
         Button resetPasswordButton = view.findViewById(R.id.passwordDimenticata);
 
-        resetPasswordButton.setOnClickListener(v -> showResetPasswordDialog());
-
-
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        Log.d(TAG, "currentUser: " + currentUser);
+        //resetPasswordButton.setOnClickListener(v -> showResetPasswordDialog());
 
 
         loginButton.setOnClickListener(v -> {
+            String email = editTextEmail.getText().toString().trim();
+            String password = editTextPassword.getText().toString().trim();
 
-            if(!editTextEmail.getText().toString().isEmpty() && !editTextPassword.getText().toString().isEmpty()) {
-                mAuth.signInWithEmailAndPassword(editTextEmail.getText().toString(), editTextPassword.getText().toString())
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    // Sign in success, update UI with the signed-in user's information
-                                    Log.d(TAG, "signInWithEmail:success");
-                                    FirebaseUser user = mAuth.getCurrentUser();
-                                    goToNextPage(v);
-                                } else {
-                                    // If sign in fails, display a message to the user.
-                                    Log.w(TAG, "signInWithEmail:failure", task.getException());
-                                    makeText(getContext(), R.string.non_existent_user, Toast.LENGTH_SHORT).show();
+            if (!email.isEmpty() && !password.isEmpty()) {
+                userViewModel.getUserMutableLiveData(email, password, true)
+                        .observe(getViewLifecycleOwner(), result -> {
+                            if (result instanceof Result.UserSuccess) {
+                                // Login riuscito
+                                User user = ((Result.UserSuccess) result).getData();
+                                Log.d(TAG, "Login successful: " + user.getEmail());
+                                goToNextPage(v);
+                            } else if (result instanceof Result.Error) {
+                                // Gestione errori
+                                String error = ((Result.Error) result).getMessage();
+                                Log.e(TAG, "Login error: " + error);
 
-                                }
                             }
                         });
             }else{
@@ -219,7 +210,7 @@ public class loginFragment extends Fragment {
 
     }
 
-    private void showResetPasswordDialog() {
+    /*private void showResetPasswordDialog() {
         Context context = getContext();
         AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.RoundedAlertDialog);
 
@@ -268,13 +259,11 @@ public class loginFragment extends Fragment {
         builder.show();
     }
 
-
-
     private void resetPassword(String email) {
         mAuth.sendPasswordResetEmail(email)
                 .addOnSuccessListener(aVoid ->
                         makeText(getContext(), R.string.email_sent, Toast.LENGTH_LONG).show())
                 .addOnFailureListener(e ->
                         makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show());
-    }
+    }*/
 }

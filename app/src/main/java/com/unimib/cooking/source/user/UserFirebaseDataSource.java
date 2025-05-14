@@ -37,6 +37,7 @@ public class UserFirebaseDataSource extends BaseUserDataRemoteDataSource {
 
     @Override
     public void saveUserData(User user) {
+        Log.d("tag", "entrato");
         databaseReference.child(FIREBASE_USERS_COLLECTION).child(user.getIdToken()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -89,5 +90,4 @@ public class UserFirebaseDataSource extends BaseUserDataRemoteDataSource {
                     }
                 });
     }
-
 }

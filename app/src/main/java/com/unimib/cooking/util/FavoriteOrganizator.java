@@ -41,7 +41,7 @@ public class FavoriteOrganizator {
                     Log.e(TAG, "Errore nel caricamento delle ricette preferite");
                 }
 
-                // 🔥 Rimuove l'osservatore dopo il primo aggiornamento
+                //  Rimuove l'osservatore dopo il primo aggiornamento
                 recipeViewModel.getFavoriteRecipesLiveData().removeObserver(this);
             }
         });
@@ -87,7 +87,7 @@ public class FavoriteOrganizator {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
-                    Log.e(TAG, "❌ Errore nel caricamento", databaseError.toException());
+                    Log.e(TAG, " Errore nel caricamento", databaseError.toException());
                 }
             });
         }else{
@@ -150,8 +150,8 @@ public class FavoriteOrganizator {
 
             for (Recipe recipe : favoriteRecipes) {
                 myRef.child(String.valueOf(recipe.getIdMeal())).setValue(recipe)
-                        .addOnSuccessListener(aVoid -> Log.d(TAG, "✅ Ricetta salvata per " + uid + ": " + recipe.getStrMeal()))
-                        .addOnFailureListener(e -> Log.e(TAG, "❌ Errore nel salvataggio", e));
+                        .addOnSuccessListener(aVoid -> Log.d(TAG, " Ricetta salvata per " + uid + ": " + recipe.getStrMeal()))
+                        .addOnFailureListener(e -> Log.e(TAG, " Errore nel salvataggio", e));
             }
         }
     }

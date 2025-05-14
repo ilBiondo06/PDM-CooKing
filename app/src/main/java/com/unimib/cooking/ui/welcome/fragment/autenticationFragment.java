@@ -39,6 +39,8 @@ import com.unimib.cooking.ui.welcome.viewmodel.UserViewModel;
 import com.unimib.cooking.ui.welcome.viewmodel.UserViewModelFactory;
 import com.unimib.cooking.util.ServiceLocator;
 import java.util.concurrent.atomic.AtomicReference;
+import com.unimib.cooking.model.Result;
+
 public class autenticationFragment extends Fragment {
 
     public static final String TAG = autenticationFragment.class.getName();
@@ -77,7 +79,9 @@ public class autenticationFragment extends Fragment {
 
         startIntentSenderForResult = new ActivityResultContracts.StartIntentSenderForResult();
 
-        activityResultLauncher = registerForActivityResult(startIntentSenderForResult, activityResult -> {
+
+        //rivedere uso di userviewmodel
+       /* activityResultLauncher = registerForActivityResult(startIntentSenderForResult, activityResult -> {
             if (activityResult.getResultCode() == Activity.RESULT_OK) {
                 Log.d(TAG, "result.getResultCode() == Activity.RESULT_OK");
                 try {
@@ -116,6 +120,40 @@ public class autenticationFragment extends Fragment {
                             Snackbar.LENGTH_SHORT).show();
                 }
             }
+        });*/
+
+        activityResultLauncher = registerForActivityResult(startIntentSenderForResult, activityResult -> {
+            if (activityResult.getResultCode() == Activity.RESULT_OK) {
+                Log.d(TAG, "result.getResultCode() == Activity.RESULT_OK");
+                try {
+                    SignInCredential credential = oneTapClient.getSignInCredentialFromIntent(activityResult.getData());
+                    String idToken = credential.getGoogleIdToken();
+                    if (idToken !=  null) {
+                        // Got an ID token from Google. Use it to authenticate with Firebase.
+                        userViewModel.getGoogleUserMutableLiveData(idToken).observe(getViewLifecycleOwner(), authenticationResult -> {
+                            if (authenticationResult.isSuccess()) {
+                                User user = ((Result.UserSuccess) authenticationResult).getData();
+                                //saveLoginData(user.getEmail(), null, user.getIdToken());
+                                Log.i(TAG, "Logged as: " + user.getEmail());
+                                userViewModel.setAuthenticationError(false);
+                                Intent intent = new Intent(getContext(), MainActivity.class);
+                                intent.putExtra("email", user.getEmail());
+                                intent.putExtra("displayName", user.getName());
+                                startActivity(intent);
+                            } else {
+                                userViewModel.setAuthenticationError(true);
+                                Snackbar.make(requireActivity().findViewById(android.R.id.content),
+                                        getErrorMessage(((Result.Error) authenticationResult).getMessage()),
+                                        Snackbar.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                } catch (ApiException e) {
+                    Snackbar.make(requireActivity().findViewById(android.R.id.content),
+                            requireActivity().getString(R.string.error_unexpected),
+                            Snackbar.LENGTH_SHORT).show();
+                }
+            }
         });
     }
 
@@ -125,9 +163,6 @@ public class autenticationFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_autentication, container, false);
 
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        Log.d(TAG, "currentUser: " + currentUser);
 
         return view;
     }
@@ -140,10 +175,6 @@ public class autenticationFragment extends Fragment {
         Button loginButton = view.findViewById(R.id.accediButton);
         Button registrationButton = view.findViewById(R.id.registratiButton);
         Button googleButton = view.findViewById(R.id.googleButton);
-
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        AtomicReference<FirebaseUser> currentUser = new AtomicReference<>(mAuth.getCurrentUser());
-        Log.d(TAG, "currentUser: " + currentUser);
 
         if (userViewModel.getLoggedUser() != null) {
             goToNextPage(view);
